@@ -149,7 +149,7 @@ for(let item in oldPointStructure)
 {
   for(let i=0;i<oldPointStructure[item].length;i++)
   {
-    newScore[oldPointStructure[item][i].toLowerCase()]=item;
+    newScore[oldPointStructure[item][i].toLowerCase()]=Number(item);
     //console.log(item+oldPointStructure[item]);
   }
 }
