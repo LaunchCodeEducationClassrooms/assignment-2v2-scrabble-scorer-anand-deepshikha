@@ -58,56 +58,35 @@ function initialPrompt() {
 
 
 
-let simpleScore={
-  name: "Simple Score",
-  description: "Each letter is worth 1 point",
-  scorerFunction: function(word)
+let simpleScore=function(word)
   {
   word = word.toUpperCase();
-	let letterPoints = "";
-  points=0;
+	let points=0;
 	for (let i = 0; i < word.length; i++) {
- 
 	  for (const pointValue in simplePointStaructure) {
  
 		 if (simplePointStaructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
-      points+=Number(pointValue);
+			    points+=Number(pointValue);
 		 }
- 
 	  }
 	}
   return points;
-	//return letterPoints;
 }
-};
-
-let vowelBonusScore={
-  name: "Bonus Vowel",
-  description: "Vowels are 3pts, consonants are 1 pt",
-  scorerFunction: function(word)
+let vowelBonusScore=function(word)
 {
   word = word.toUpperCase();
-	points=0;
+	let points=0;
 	for (let i = 0; i < word.length; i++) {
- 
 	  for (const pointValue in vowelBonusPointStructure) {
- 
 		 if (vowelBonusPointStructure[pointValue].includes(word[i])) {
 		      points+=Number(pointValue);
 		 }
- 
 	  }
 	}
   return points;
-	
 }
-};
 
-let scrabbleScore={
-  name: "Scrabble",
-  description: "The traditional scoring algorithm",
-  scorerFunction: function(word)
+let scrabbleScore=function(word)
 {
   let points=0;
 	for (let i = 0; i < word.length; i++) {
@@ -120,9 +99,27 @@ let scrabbleScore={
 	  }
   return points;
 }
+
+scoringAlgorithm1={
+  name: "Simple Score",
+  description: "Each letter is worth 1 point",
+  scorerFunction: simpleScore
 };
 
-const scoringAlgorithms = [simpleScore,vowelBonusScore,scrabbleScore];
+scoringAlgorithm2={
+  name: "Bonus Vowel",
+  description: "Vowels are 3pts, consonants are 1 pt",
+  scorerFunction: vowelBonusScore
+};
+
+scoringAlgorithm3={
+  name: "Scrabble",
+  description: "The traditional scoring algorithm",
+  scorerFunction: scrabbleScore
+};
+
+const scoringAlgorithms = [scoringAlgorithm1,scoringAlgorithm2,scoringAlgorithm3];
+
 function scorerPrompt() {
 let choice;
 console.log("Which scoring algorithm would you like to use?\n");
