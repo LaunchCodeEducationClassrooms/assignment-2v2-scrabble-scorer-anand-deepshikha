@@ -118,7 +118,7 @@ scoringAlgorithm3={
   scorerFunction: scrabbleScore
 };
 
-const scoringAlgorithms = [Object({ name: "Simple Score", description: "Each letter is worth 1 point", scorerFunction: simpleScore}), Object({ name: "Bonus Vowel", description: "Vowels are 3 pts, consonants are 1 pt", scorerFunction: vowelBonusScore}), Object({ name: "Scrabble", description: "The traditional scoring algorithm", scorerFunction: scrabbleScore})];
+const scoringAlgorithms = [Object({ name: "Simple Score", description: "Each letter is worth 1 point", scoringFunction: simpleScore}), Object({ name: "Bonus Vowel", description: "Vowels are 3 pts, consonants are 1 pt", scoringFunction: vowelBonusScore}), Object({ name: "Scrabble", description: "The traditional scoring algorithm", scoringFunction: scrabbleScore})];
 
 function scorerPrompt() {
 let choice;
@@ -132,7 +132,7 @@ do
 }while(choice>3 || choice<0);
 
 console.log(`Algorithm Name: ${scoringAlgorithms[choice].name}`);
-console.log(`Score for ${word}: ${scoringAlgorithms[choice].scorerFunction(word)}`);
+console.log(`Score for ${word}: ${scoringAlgorithms[choice].scoringFunction(word)}`);
 return scoringAlgorithms[choice];
 }
 
