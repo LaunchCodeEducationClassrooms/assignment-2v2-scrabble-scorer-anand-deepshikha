@@ -118,7 +118,14 @@ scoringAlgorithm3={
   scorerFunction: scrabbleScore
 };
 
-const scoringAlgorithms = [scoringAlgorithm1,scoringAlgorithm2,scoringAlgorithm3];
+const scoringAlgorithms = [Object({name: "Simple Score",
+  description: "Each letter is worth 1 point",
+  scorerFunction: simpleScore
+}),Object({name: "Bonus Vowel",
+  description: "Vowels are 3pts, consonants are 1 pt",
+  scorerFunction: vowelBonusScore}),Object({name: "Scrabble",
+  description: "The traditional scoring algorithm",
+  scorerFunction: scrabbleScore})];
 
 function scorerPrompt() {
 let choice;
